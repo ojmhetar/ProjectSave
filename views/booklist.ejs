@@ -1,0 +1,87 @@
+<html><head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        
+        <link type="text/css" rel="stylesheet" href="./css/style.css">
+        <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.1.2/css/bulma.min.css">
+
+        <script> 
+        function toggleModal(user_id) {
+          document.getElementById("email-modal").classList.toggle("is-active");
+          var selectedId = user_id; 
+          console.log(selectedId);
+          document.getElementById("sellerInfo").value = selectedId;
+        }
+
+        </script>
+
+    </head>
+
+    <body> 
+
+
+    <section class="hero is-primary is-fullheight" >
+      <div class="hero-body">
+        <div class="container has-text-centered">
+
+        <% for(var i=0; i < entries.length; i++) {%>
+        <div class="box">
+          <article class="media">
+            <div class="media-left">
+              <figure class="image is-64x64">
+                <img src="http://placehold.it/128x128" alt="Image">
+              </figure>
+            </div>
+            <div class="media-content">
+              <div class="content" style="color: black; font-size: 1.4em">
+                <p>
+                  <strong><%= entries[i].title %></strong> <%= entries[i].author %>         
+                </p>
+
+                <button id="modal-toggle" class="button is-warning" onclick="toggleModal('<%= entries[i].user_id %>')"> Message </button>
+
+              </div>
+              </div>
+            </article>
+        </div>
+
+        <div id="email-modal" class="modal">
+          <div class="modal-background"></div>
+          <div class="modal-card">
+            <form action="/processEmail" method="post">
+              <header class="modal-card-head">
+                <p class="modal-card-title"> <%= entries[i].title %></p>
+                <button class="delete" onclick="toggleModal()"></button>
+              </header>
+              <section class="modal-card-body">
+                <p class="control">
+                  <textarea class="textarea" placeholder="Hi! I'm interested in buying your book."></textarea>
+                </p>
+                <input id="sellerInfo" name="sellerId" type="hidden"> 
+              </section>
+              <footer class="modal-card-foot">
+                <button type="submit" class="button is-primary">Send Email</button>
+                <a class="button" onclick="toggleModal()">Cancel</a>
+              </footer>
+            </form>
+          </div>
+        </div>
+        <% } %>
+
+        </div>
+      </div>
+    </section>
+
+        
+    </body>
+    <footer class="footer">
+      <div class="container">
+        <div class="content has-text-centered">
+           Contact <strong>Ojas Mhetar</strong> at ojas@mhetar.com for any inquiries.             
+        </div>
+      </div>
+    </footer>
+
+
+</html>

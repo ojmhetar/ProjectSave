@@ -1,0 +1,20 @@
+{
+  "name": "textbook-buddy",
+  "main": "server.js",
+  "dependencies" : {
+    "express" : "*",           
+    "ejs" : "*",         
+    "passport" : "*",         
+    "passport-local" : "*",    
+    "passport-facebook" : "*", 
+    "connect-flash" : "*",     
+    "bcrypt-nodejs" : "*",
+    "mysql":"*", 
+    "morgan": "*",
+    "body-parser": "*",
+    "cookie-parser": "*",
+    "express-session": "*",
+    "request":"*",
+    "sendgrid":"*"
+   }
+}

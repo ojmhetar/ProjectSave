@@ -1,0 +1,70 @@
+<html><head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        
+        <link type="text/css" rel="stylesheet" href="./css/style.css">
+        <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.1.2/css/bulma.min.css">
+
+        <style> 
+        /*Move to actual style file later -____-*/
+        #login a {
+
+          color:black;
+        }
+
+        .form-group{
+            margin: 10px 0;
+        }
+
+        #login button {
+            text-align: center;
+        }
+
+        </style>
+    </head>
+
+    <body> 
+
+    <section class="hero is-primary is-fullheight" >
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <div class="columns">
+            <div class="column"> </div>
+            <div class="column">
+              <form id="login" action="/login" method="post">
+                <div class="form-group">
+                    <p class="control">
+                    <input type="email" class="input form-control" name="email" placeholder="Email">
+                    </p>
+                </div>
+                <div class="form-group">
+                    <p class="control">
+                    <input type="password" class="input form-control" name="password" placeholder="Password">
+                    </p>
+                </div>
+
+                <p class="control">
+                <button type="submit" class="button is-success">Login</button>
+                </p>
+                <p>Need an account? <a href="/signup">Signup</a></p>
+            </form>
+            </div>
+            <div class="column"> </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        
+    </body>
+    <footer class="footer">
+      <div class="container">
+        <div class="content has-text-centered">
+           Contact <strong>Ojas Mhetar</strong> at ojas@mhetar.com for any inquiries.             
+        </div>
+      </div>
+    </footer>
+
+
+</html>
