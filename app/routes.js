@@ -1,7 +1,7 @@
 module.exports = function(app, passport, connection, request, sendgrid) {
 
     var helper = sendgrid.mail;
-    var sg = require('sendgrid')(process.env.SGKEY);
+    var sg = require('sendgrid')(process.env.SGPSKEY);
 
     // =====================================
     // HOME PAGE (with login links) ========
@@ -134,11 +134,14 @@ module.exports = function(app, passport, connection, request, sendgrid) {
             } 
             else {
 
-                from_email = new helper.Email(req.body.email)
-                to_email = new helper.Email(rows[0].email)
-                subject = "Someone wants to buy your textbook!"
-                content = new helper.Content("text/plain", "Contact this person: " + req.body.email)
-                mail = new helper.Mail(from_email, subject, to_email, content)
+        
+
+
+                var from_email = new helper.Email(req.user.email)
+                var to_email = new helper.Email(rows[0].email)
+                var subject = "Someone wants to buy your textbook!"
+                var content = new helper.Content("text/plain", "Contact this person: " + req.user.email)
+                var mail = new helper.Mail(from_email, subject, to_email, content)
 
                 // email.addTo(rows[0].email);
                 // email.setFrom(req.body.email);
@@ -155,7 +158,16 @@ module.exports = function(app, passport, connection, request, sendgrid) {
                   console.log(response.statusCode)
                   console.log(response.body)
                   console.log(response.headers)
+
+                  if(error) {
+                     res.send("There was an error");
+                  }
+                  else {
+                     res.send("Email sent!");
+                  }
                 })
+
+
             }
             //res.render('booklist.ejs', {entries : rows});
         });
